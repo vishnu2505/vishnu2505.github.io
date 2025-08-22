@@ -1,0 +1,39 @@
+# Site settings
+title: Vishnu Vardhan Reddy Samanthula
+email: samanthula.v@northeastern.edu
+description: >-
+  Backend Developer specializing in distributed systems, blockchain, 
+  and data analytics. MS in Data Analytics at Northeastern University.
+baseurl: ""
+url: "https://vishnu2505.github.io"
+github_username: vishnu2505
+linkedin_username: "https://www.linkedin.com/in/vishnu-vardhan-reddy-samanthula-056a831b6/"
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# GitHub API settings
+github:
+  username: vishnu2505
+  
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /about
+  - title: Projects
+    url: /projects
+  - title: Blog
+    url: /blog
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE

@@ -1,0 +1,53 @@
+---
+layout: default
+title: Projects
+---
+
+<section class="projects-page">
+  <div class="page-header">
+    <h1>My Projects</h1>
+    <p>A collection of my open-source projects and contributions</p>
+  </div>
+  
+  <!-- Filters -->
+  <div class="project-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="python">Python</button>
+    <button class="filter-btn" data-filter="java">Java</button>
+    <button class="filter-btn" data-filter="ml">Machine Learning</button>
+    <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+  </div>
+  
+  <!-- Projects Grid (Populated by GitHub API) -->
+  <div id="all-projects" class="projects-grid">
+    <div class="loading">Loading all projects...</div>
+  </div>
+</section>
+
+<script>
+// Load all projects for the projects page
+document.addEventListener('DOMContentLoaded', () => {
+  loadAllProjects();
+});
+
+async function loadAllProjects() {
+  const container = document.getElementById('all-projects');
+  
+  try {
+    const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
+    const repos = await response.json();
+    
+    container.innerHTML = '';
+    
+    repos
+      .filter(repo => !repo.fork)
+      .forEach(repo => {
+        const card = createProjectCard(repo);
+        container.appendChild(card);
+      });
+      
+  } catch (error) {
+    container.innerHTML = '<p>Error loading projects.</p>';
+  }
+}
+</script>
