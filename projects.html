@@ -1,53 +1,106 @@
 ---
 layout: default
 title: Projects
+permalink: /projects/
 ---
 
-<section class="projects-page">
-  <div class="page-header">
-    <h1>My Projects</h1>
-    <p>A collection of my open-source projects and contributions</p>
-  </div>
-  
-  <!-- Filters -->
-  <div class="project-filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="python">Python</button>
-    <button class="filter-btn" data-filter="java">Java</button>
-    <button class="filter-btn" data-filter="ml">Machine Learning</button>
-    <button class="filter-btn" data-filter="blockchain">Blockchain</button>
-  </div>
-  
-  <!-- Projects Grid (Populated by GitHub API) -->
-  <div id="all-projects" class="projects-grid">
-    <div class="loading">Loading all projects...</div>
-  </div>
+<section class="projects-page" style="padding: 3rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">My Projects</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">
+            A collection of my open-source projects and technical contributions
+        </p>
+    </div>
+    
+    <!-- Featured Projects Section -->
+    <div style="margin-bottom: 4rem;">
+        <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent-primary);">Featured Projects</h2>
+        
+        <div class="projects-grid" style="margin-bottom: 3rem;">
+            <!-- Fraud Detect X -->
+            <div class="project-card">
+                <h3>
+                    <a href="https://github.com/vishnu2505/FraudDetectX-main" target="_blank">
+                        🔍 Fraud Detect X
+                    </a>
+                </h3>
+                <p>Real-time fraud detection system achieving 99% accuracy using machine learning</p>
+                <ul style="color: var(--text-secondary); font-size: 0.9rem; margin: 1rem 0;">
+                    <li>Architected distributed system processing 250K+ transactions</li>
+                    <li>Engineered scalable pipeline with Kafka & Spark (sub-100ms latency)</li>
+                    <li>Implemented XGBoost model with 99% accuracy</li>
+                    <li>Deployed to GKE with CI/CD automation</li>
+                </ul>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Kafka</span>
+                    <span class="skill-tag">GCP</span>
+                    <span class="skill-tag">Celery</span>
+                    <span class="skill-tag">Redis</span>
+                </div>
+            </div>
+            
+            <!-- SISA Algorithm -->
+            <div class="project-card">
+                <h3>
+                    <a href="https://github.com/vishnu2505/sisa-unlearning" target="_blank">
+                        🧠 Machine Unlearning: SISA Algorithm
+                    </a>
+                </h3>
+                <p>Research implementation on machine unlearning with performance analysis</p>
+                <ul style="color: var(--text-secondary); font-size: 0.9rem; margin: 1rem 0;">
+                    <li>Led team of 3 in SISA algorithm development using PyTorch</li>
+                    <li>Achieved 36% reduction in retraining time</li>
+                    <li>Demonstrated 5% higher balanced accuracy over baseline</li>
+                    <li>Analyzed trade-offs on EMNIST and CIFAR-10 datasets</li>
+                </ul>
+                <div class="skill-tags" style="margin-top: 1rem;">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">CNNs</span>
+                    <span class="skill-tag">TensorFlow</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- All GitHub Projects -->
+    <div>
+        <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent-primary);">All Projects</h2>
+        <div id="github-projects" class="projects-grid">
+            <!-- Projects will be loaded dynamically -->
+        </div>
+    </div>
 </section>
 
 <script>
 // Load all projects for the projects page
 document.addEventListener('DOMContentLoaded', () => {
-  loadAllProjects();
+    loadAllProjects();
 });
 
 async function loadAllProjects() {
-  const container = document.getElementById('all-projects');
-  
-  try {
-    const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
-    const repos = await response.json();
+    const container = document.getElementById('github-projects');
     
-    container.innerHTML = '';
-    
-    repos
-      .filter(repo => !repo.fork)
-      .forEach(repo => {
-        const card = createProjectCard(repo);
-        container.appendChild(card);
-      });
-      
-  } catch (error) {
-    container.innerHTML = '<p>Error loading projects.</p>';
-  }
+    try {
+        container.innerHTML = '<div class="loading">Loading projects from GitHub...</div>';
+        
+        const response = await fetch(`https://api.github.com/users/vishnu2505/repos?sort=updated&per_page=100`);
+        const repos = await response.json();
+        
+        container.innerHTML = '';
+        
+        const filteredRepos = repos
+            .filter(repo => !repo.fork && !repo.private)
+            .sort((a, b) => b.stargazers_count - a.stargazers_count);
+        
+        filteredRepos.forEach(repo => {
+            const card = createProjectCard(repo);
+            container.appendChild(card);
+        });
+        
+    } catch (error) {
+        container.innerHTML = '<p style="color: var(--text-secondary);">Error loading projects. Please visit <a href="https://github.com/vishnu2505" target="_blank">my GitHub profile</a>.</p>';
+    }
 }
 </script>

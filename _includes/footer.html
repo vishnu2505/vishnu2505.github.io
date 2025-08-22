@@ -1,5 +1,15 @@
-<footer class="site-footer">
-  <div class="footer-content">
-    <p>&copy; 2024 Vishnu Vardhan Reddy. All rights reserved.</p>
-  </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title | default: "Vishnu Vardhan Reddy" }}. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="{{ '/privacy' | relative_url }}" class="footer-link">Privacy</a>
+                <a href="{{ '/terms' | relative_url }}" class="footer-link">Terms</a>
+                <a href="{{ site.repository_url | default: 'https://github.com/vishnu2505/vishnu2505.github.io' }}" target="_blank" class="footer-link">
+                    <i class="fas fa-code"></i> Source
+                </a>
+            </div>
+        </div>
+    </div>
 </footer>

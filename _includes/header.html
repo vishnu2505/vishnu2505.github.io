@@ -1,37 +1,32 @@
-<header class="site-header">
-  <nav class="navbar">
+<!-- Navigation -->
+<nav class="navbar">
     <div class="nav-container">
-      <a href="/" class="nav-logo">
-        <span class="logo-text">VVR</span>
-      </a>
-      
-      <ul class="nav-menu">
-        {% for item in site.navigation %}
-        <li class="nav-item">
-          <a href="{{ item.url }}" class="nav-link {% if page.url == item.url %}active{% endif %}">
-            {{ item.title }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      
-      <div class="nav-social">
-        <a href="https://github.com/{{ site.github_username }}" target="_blank" class="social-link">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" class="social-link">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:{{ site.email }}" class="social-link">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-      
-      <button class="nav-toggle" id="navToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <a href="{{ '/' | relative_url }}" class="nav-logo">VVR</a>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="{{ '/about' | relative_url }}" class="nav-link {% if page.url == '/about' %}active{% endif %}">About</a></li>
+            <li><a href="{{ '/projects' | relative_url }}" class="nav-link {% if page.url == '/projects' %}active{% endif %}">Projects</a></li>
+            <li><a href="{{ '/blog' | relative_url }}" class="nav-link {% if page.url == '/blog' %}active{% endif %}">Blog</a></li>
+        </ul>
+        
+        <div class="nav-social">
+            <a href="https://github.com/{{ site.github_username | default: 'vishnu2505' }}" target="_blank" class="social-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:{{ site.email | default: 'samanthula.v@northeastern.edu' }}" class="social-link" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
-  </nav>
-</header>
+</nav>

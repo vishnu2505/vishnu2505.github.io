@@ -1,98 +1,97 @@
 ---
 layout: default
+title: Home
 ---
 
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title animate-fade-in">
-      Hi, I'm <span class="highlight">Vishnu Vardhan Reddy</span>
+<!-- Hero Section -->
+<section class="hero animate-fade-in">
+    <h1 class="hero-title">
+        Hi, I'm <span class="highlight">Vishnu Vardhan Reddy</span>
     </h1>
-    <p class="hero-subtitle animate-slide-up">
-      Backend Developer | Data Analytics @ Northeastern | Ex-Capgemini
+    <p class="hero-subtitle">
+        Backend Developer | Data Analytics @ Northeastern | Ex-Capgemini
     </p>
-    <p class="hero-description animate-slide-up-delay">
-      Building scalable financial systems with 3+ years of experience in blockchain, 
-      distributed systems, and cloud technologies.
+    <p class="hero-description">
+        Building scalable financial systems with 3+ years of experience in blockchain, 
+        distributed systems, and cloud technologies.
     </p>
-    <div class="hero-buttons animate-fade-in-delay">
-      <a href="/projects" class="btn btn-primary">View Projects</a>
-      <a href="/resume" class="btn btn-secondary">Download Resume</a>
+    <div class="hero-buttons">
+        <a href="{{ '/projects' | relative_url }}" class="btn btn-primary">View Projects</a>
+        <a href="{{ '/assets/resume' | relative_url }}" class="btn btn-secondary" download>Download Resume</a>
     </div>
-  </div>
 </section>
 
 <!-- Skills Section -->
 <section class="skills">
-  <h2>Technical Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-category">
-      <h3>Languages</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">Java</span>
-        <span class="skill-tag">Kotlin</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-      </div>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <h3>Languages</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Kotlin</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">R</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3>Big Data</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Kafka</span>
+                <span class="skill-tag">Spark</span>
+                <span class="skill-tag">Flink</span>
+                <span class="skill-tag">Airflow</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3>Cloud & DevOps</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">GCP</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Kubernetes</span>
+            </div>
+        </div>
+        <div class="skill-category">
+            <h3>Blockchain</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">R3 Corda</span>
+                <span class="skill-tag">Smart Contracts</span>
+                <span class="skill-tag">DLT</span>
+                <span class="skill-tag">RBAC</span>
+            </div>
+        </div>
     </div>
-    <div class="skill-category">
-      <h3>Big Data</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">Kafka</span>
-        <span class="skill-tag">Spark</span>
-        <span class="skill-tag">Flink</span>
-        <span class="skill-tag">Airflow</span>
-      </div>
-    </div>
-    <div class="skill-category">
-      <h3>Cloud & DevOps</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">GCP</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Kubernetes</span>
-      </div>
-    </div>
-    <div class="skill-category">
-      <h3>Blockchain</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">R3 Corda</span>
-        <span class="skill-tag">Smart Contracts</span>
-        <span class="skill-tag">DLT</span>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- Featured Projects (Loaded via GitHub API) -->
+<!-- Featured Projects -->
 <section class="projects">
-  <h2>Featured Projects</h2>
-  <div id="github-projects" class="projects-grid">
-    <div class="loading">Loading projects...</div>
-  </div>
-  <div class="view-more">
-    <a href="/projects" class="btn btn-outline">View All Projects →</a>
-  </div>
+    <h2>Featured Projects</h2>
+    <div id="github-projects" class="projects-grid">
+        <!-- Projects will be loaded dynamically via JavaScript -->
+    </div>
 </section>
 
 <!-- GitHub Stats -->
 <section class="github-stats">
-  <h2>GitHub Activity</h2>
-  <div class="stats-grid">
-    <div class="stat-card">
-      <span id="repo-count" class="stat-number">--</span>
-      <span class="stat-label">Repositories</span>
+    <h2>GitHub Activity</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span id="repo-count" class="stat-number">--</span>
+            <span class="stat-label">Repositories</span>
+        </div>
+        <div class="stat-card">
+            <span id="star-count" class="stat-number">--</span>
+            <span class="stat-label">Stars Earned</span>
+        </div>
+        <div class="stat-card">
+            <span id="follower-count" class="stat-number">--</span>
+            <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat-card">
+            <span id="commit-count" class="stat-number">--</span>
+            <span class="stat-label">Contributions</span>
+        </div>
     </div>
-    <div class="stat-card">
-      <span id="star-count" class="stat-number">--</span>
-      <span class="stat-label">Stars Earned</span>
-    </div>
-    <div class="stat-card">
-      <span id="follower-count" class="stat-number">--</span>
-      <span class="stat-label">Followers</span>
-    </div>
-    <div class="stat-card">
-      <span id="commit-count" class="stat-number">--</span>
-      <span class="stat-label">Contributions (2024)</span>
-    </div>
-  </div>
 </section>
