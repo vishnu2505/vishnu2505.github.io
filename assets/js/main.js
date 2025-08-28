@@ -68,7 +68,7 @@ const FEATURED_REPOS = ['FraudDetectX-main']; // Add your featured repo names
 
 // Load GitHub Projects
 async function loadGitHubProjects() {
-    const projectsContainer = document.getElementById('github-projects');
+    const projectsContainer = document.getElementById('featured-projects');
     
     if (!projectsContainer) return;
     
@@ -90,8 +90,8 @@ async function loadGitHubProjects() {
             .filter(repo => !repo.fork && !repo.private)
             .sort((a, b) => {
                 // Prioritize featured repos
-                const aFeatured = FEATURED_REPOS.includes(repo.name.toLowerCase());
-                const bFeatured = FEATURED_REPOS.includes(repo.name.toLowerCase());
+                const aFeatured = FEATURED_REPOS.includes(a.name.toLowerCase());
+                const bFeatured = FEATURED_REPOS.includes(b.name.toLowerCase());
                 if (aFeatured && !bFeatured) return -1;
                 if (!aFeatured && bFeatured) return 1;
                 
@@ -247,7 +247,7 @@ function updateStat(elementId, value) {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Load GitHub data if on home page or projects page
-    if (document.getElementById('github-projects')) {
+    if (document.getElementById('featured-projects')) {
         loadGitHubProjects();
     }
     
